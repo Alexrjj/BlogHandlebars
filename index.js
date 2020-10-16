@@ -2,7 +2,15 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import slutify from 'slugify';
 import handlebars from 'express-handlebars';
+import connection from './database/connection';
 const app = express();
+
+// Database
+connection.authenticate().then(() => {
+  console.log('Database Ok');
+}).catch((err) => {
+  console.log(err);
+});
 
 // Body Parser
 app.use(bodyParser.urlencoded({ extended: false }));
