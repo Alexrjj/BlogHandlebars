@@ -7,6 +7,7 @@
     <div class="card-body">
       <form method="POST" action="/author/save" onsubmit="checkName(event, this)">
         <input class="form-control" type="text" id="author" name="author" placeholder="Nome *"><br>
+        <input class="form-control" type="email" id="email" name="email" placeholder="E-mail *"><br>
         <p style="color: red; font-size: 0.6rem"><strong>(*) Campo obritagório</strong></p>
         <button class="btn btn-success">Salvar</button>
       </form>
@@ -32,7 +33,7 @@
             <tr>
               <td>{{this.id}}</td>
               <td>{{this.name}}</td>
-              <td>admin@blog.com.br</td>
+              <td>{{this.email}}</td>
               <td>Editar | Excluir</td>
             </tr>
             {{/each}}
@@ -45,11 +46,12 @@
 <script>
   function checkName(event, form) {
     event.preventDefault();
-    let name = document.getElementById('author')
-    if (name.value !== '') {
+    let name = document.getElementById('author');
+    let email = document.getElementById('email');
+    if (name.value !== '' && email.value !== '') {
       form.submit();
     } else {
-      alert('Escolha um nome!')
+      alert('Preencha todos os campos!')
     }
   }
 </script>
