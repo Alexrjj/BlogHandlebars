@@ -18,7 +18,7 @@ const Post = connection.define('posts', {
 });
 
 Author.hasMany(Post); // Um autor tem muitos posts.
-Article.belongsTo(Author); // Um post pertence a um autor.
+Post.belongsTo(Author); // Um post pertence a um autor.
 
 Post.sync({ force: false });
 
