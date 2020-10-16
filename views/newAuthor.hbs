@@ -2,7 +2,7 @@
   <hr>
   <div class="card">
     <div class="card-header">
-      <h4>Novo Autor</h4>
+      <h5>Novo autor</h5>
     </div>
     <div class="card-body">
       <form method="POST" action="/author/save" onsubmit="checkName(event, this)">
@@ -10,6 +10,38 @@
         <p style="color: red; font-size: 0.6rem"><strong>(*) Campo obritagório</strong></p>
         <button class="btn btn-success">Salvar</button>
       </form>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5>Autores cadastrados</h5>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Contato</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Alex</td>
+            <td>admin@blog.com.br</td>
+            <td>Editar | Excluir</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Usuário</td>
+            <td>user@blog.com.br</td>
+            <td>Editar | Excluir</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
