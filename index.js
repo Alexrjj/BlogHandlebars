@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import slutify from 'slugify';
 import handlebars from 'express-handlebars';
-import connection from './database/connection';
+import connection from './database/connection.js';
 const app = express();
 
 // Database
@@ -33,5 +33,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log('Server on');
+  console.log('Server running on http://localhost:3000');
 });
