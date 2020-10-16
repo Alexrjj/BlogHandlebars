@@ -1,8 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import slutify from 'slugify';
+import slugify from 'slugify';
 import handlebars from 'express-handlebars';
 import connection from './database/connection.js';
+import Author from './authors/Author.js';
 const app = express();
 
 // Database
@@ -26,7 +27,7 @@ app.set('view engine', 'hbs');
 // Static Files
 app.use(express.static('public'));
 
-// ---- Routes ----
+// ---- GET Routes ----
 // Home
 app.get('/', (req, res) => {
   res.render('index');
@@ -41,6 +42,20 @@ app.get('/newAuthor', (req, res) => {
 app.get('/newPost', (req, res) => {
   res.render('newPost');
 });
+
+// ---- POST Routes ----
+// New Author
+app.post('/author/save', (req, res) => {
+  let author = req.body.author;
+
+  Author.create({
+    name: author,
+    slug: slugify(author, { lower: true })
+  }).then(() => {
+    res.redirect('/newAuthor');
+  });
+});
+
 
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
