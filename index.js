@@ -51,10 +51,12 @@ app.get('/newPost', (req, res) => {
 // New Author
 app.post('/author/save', (req, res) => {
   let author = req.body.author;
+  let email = req.body.email;
 
   Author.create({
     name: author,
-    slug: slugify(author, { lower: true })
+    slug: slugify(author, { lower: true }),
+    email: email
   }).then(() => {
     res.redirect('/newAuthor');
   });
