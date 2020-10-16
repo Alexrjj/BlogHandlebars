@@ -28,18 +28,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Alex</td>
-            <td>admin@blog.com.br</td>
-            <td>Editar | Excluir</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Usuário</td>
-            <td>user@blog.com.br</td>
-            <td>Editar | Excluir</td>
-          </tr>
+            {{#each authors}}
+            <tr>
+              <td>{{this.id}}</td>
+              <td>{{this.name}}</td>
+              <td>admin@blog.com.br</td>
+              <td>Editar | Excluir</td>
+            </tr>
+            {{/each}}
         </tbody>
       </table>
     </div>

@@ -35,7 +35,11 @@ app.get('/', (req, res) => {
 
 // New Author
 app.get('/newAuthor', (req, res) => {
-  res.render('newAuthor');
+  Author.findAll().then(authors => {
+    res.render('newAuthor', {
+      authors: authors.map(author => author.toJSON())
+    })
+  })
 });
 
 // New Post
