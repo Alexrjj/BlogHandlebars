@@ -1,8 +1,8 @@
-const express = require('express');
+import express from 'express';
 const app = express();
-const bodyParser = require('body-parser');
-const slutify = require('slugify');
-const handlebars = require('express-handlebars');
+import bodyParser from 'body-parser';
+import slutify from 'slugify';
+import handlebars from 'express-handlebars';
 
 app.get('/', (req, res) => {
   res.render('index');
