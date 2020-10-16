@@ -31,7 +31,18 @@ app.use(express.static('public'));
 // ---- GET Routes ----
 // Home
 app.get('/', (req, res) => {
-  res.render('index');
+  Post.findAll({
+    order: [
+      ['id', 'DESC']
+    ]
+  }).then(posts => {
+    Author.findAll().then(authors => {
+      res.render('index', {
+        posts: posts.map(post => post.toJSON()),
+        authors: authors.map(author => author.toJSON())
+      })
+    })
+  })
 });
 
 // New Author
