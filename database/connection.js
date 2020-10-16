@@ -6,4 +6,4 @@ const connection = new Sequelize('bloghandlebars', 'root', 'root', {
   timezone: '-03:00'
 });
 
-module.exports = connection;
+export default connection;
