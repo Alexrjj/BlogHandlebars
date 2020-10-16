@@ -1,0 +1,27 @@
+<div class="container">
+  <hr>
+  <div class="card">
+    <div class="card-header">
+      <h4>Novo Autor</h4>
+    </div>
+    <div class="card-body">
+      <form method="POST" action="/author/save" onsubmit="checkName(event, this)">
+        <input class="form-control" type="text" id="author" name="author" placeholder="Nome *"><br>
+        <p style="color: red; font-size: 0.6rem"><strong>(*) Campo obritagório</strong></p>
+        <button class="btn btn-success">Salvar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function checkName(event, form) {
+    event.preventDefault();
+    let name = document.getElementById('author')
+    if (name.value !== '') {
+      form.submit();
+    } else {
+      alert('Escolha um nome!')
+    }
+  }
+</script>

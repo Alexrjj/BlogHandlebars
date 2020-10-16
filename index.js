@@ -32,6 +32,11 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+// New Author
+app.get('/newAuthor', (req, res) => {
+  res.render('newAuthor');
+});
+
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
 });
