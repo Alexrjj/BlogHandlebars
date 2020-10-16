@@ -37,6 +37,11 @@ app.get('/newAuthor', (req, res) => {
   res.render('newAuthor');
 });
 
+// New Post
+app.get('/newPost', (req, res) => {
+  res.render('newPost');
+});
+
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
 });

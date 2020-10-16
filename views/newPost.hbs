@@ -1,0 +1,45 @@
+<div class="container">
+  <hr>
+  <div class="card">
+    <div class="card-header">
+      <h2>Novo post</h2>
+    </div>
+    <div class="card-body">
+      <form method="POST" action="/post/save" onsubmit="checkData(event, this)">
+        <input class="form-control" type="text" id="title" name="title" placeholder="Título *"><br>
+        <textarea placeholder="Digite o texto aqui... *" id="text" name="text" cols="30" rows="10"
+          class="form-control"></textarea><br>
+        <strong><label for="author">Autor</label></strong>
+        <select id="author" name="author" class="form-control">
+          <option value="standard" selected>Escolha um ... *</option>
+
+        </select>
+        <p style="font-size: 0.8rem; padding-top: 0.5rem; color: red"><strong>(*) Campos obrigatórios</strong></p>
+        <button class="btn btn-success">Salvar</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+  tinymce.init({
+    language: 'pt_BR',
+    selector: "#article",
+    plugins: [
+      'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
+    ]
+  })
+
+  function checkData(event, form) {
+    event.preventDefault();
+    let title = document.getElementById('title');
+    let text = document.getElementById('text');
+    let author = document.getElementById('author');
+
+    if (title.value !== '' && text.value !== '' && author.value !== 'standard') {
+      form.submit();
+    } else {
+      alert('Preencha todos os campos!')
+    }
+  }
+</script>
