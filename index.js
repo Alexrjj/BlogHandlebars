@@ -4,7 +4,6 @@ import slugify from 'slugify';
 import handlebars from 'express-handlebars';
 import connection from './database/connection.js';
 import Author from './authors/Author.js';
-import Post from './posts/Post.js';
 const app = express();
 
 // Database
@@ -45,11 +44,7 @@ app.get('/newAuthor', (req, res) => {
 
 // New Post
 app.get('/newPost', (req, res) => {
-  Author.findAll().then(authors => {
-    res.render('newPost', {
-      authors: authors.map(author => author.toJSON())
-    })
-  })  
+  res.render('newPost');
 });
 
 // ---- POST Routes ----
@@ -64,24 +59,9 @@ app.post('/author/save', (req, res) => {
     email: email
   }).then(() => {
     res.redirect('/newAuthor');
-  })
+  });
 });
 
-// New Post
-app.post('/post/save', (req, res) => {
-  let title = req.body.title;
-  let text = req.body.text;
-  let author = req.body.author;
-
-  Post.create({
-    title: title,
-    text: text,
-    authorId: author,
-    slug: slugify(title, { lower: true })
-  }).then(() => {
-    res.redirect('/');
-  })
-});
 
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
