@@ -12,7 +12,9 @@
         <strong><label for="author">Autor</label></strong>
         <select id="author" name="author" class="form-control">
           <option value="standard" selected>Escolha um ... *</option>
-
+          {{#each authors}}
+            <option value="{{this.id}}">{{this.name}}</option>
+          {{/each}}
         </select>
         <p style="font-size: 0.8rem; padding-top: 0.5rem; color: red"><strong>(*) Campos obrigatórios</strong></p>
         <button class="btn btn-success">Salvar</button>
